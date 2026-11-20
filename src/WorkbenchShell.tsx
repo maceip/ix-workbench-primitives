@@ -122,7 +122,7 @@ export const WorkbenchShell: React.FC<WorkbenchShellProps> = ({
               label="Z3 Counterexample :: nanvix::mm::vmem::map_page_frame"
               sublabel="Postcondition violated at vmem.rs:147 (W^X invariant breach)"
               variant="alarm"
-              expanded
+              collapsed={false}
             >
               <div style={{ fontFamily: 'var(--ix-wb-font-mono)', fontSize: 12, padding: 6 }}>
                 assertion failed: pt.lookup(vaddr).flags().writable() ==&gt; !pt.lookup(vaddr).flags().executable()
