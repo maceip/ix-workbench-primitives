@@ -5,3 +5,4 @@ export * from './VerusEditor';
 export * from './ProofDag';
 export * from './Flamegraph';
 export * from './AdversarialTranscript';
+export * from './PatchGate';
