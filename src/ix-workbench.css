@@ -263,3 +263,170 @@ ix-pane-layout > [slot='content'],
   font-size: 12px;
   color: var(--theme-color-soft-text);
 }
+
+/* IxVerusEditor — exec/proof/spec lane editor with obligation gutters */
+.ix-verus-editor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  background: var(--theme-color-1);
+  color: var(--theme-color-std-text);
+  font-family: var(--ix-wb-font-mono);
+  font-size: 12px;
+}
+
+.ix-verus-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 10px;
+  font-size: 11px;
+  background: var(--theme-color-component-1);
+  border-bottom: 1px solid var(--theme-color-soft-bdr);
+}
+
+.ix-verus-stats {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+}
+
+.ix-verus-stats [data-state='verified'] { color: var(--theme-color-success, #00c1b6); }
+.ix-verus-stats [data-state='failed']  { color: var(--theme-color-alarm); }
+.ix-verus-stats [data-state='admit']   { color: var(--theme-color-warning); }
+.ix-verus-stats [data-state='timeout'] { color: var(--theme-color-warning); }
+
+.ix-verus-mode-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+  padding-left: 8px;
+  border-left: 1px solid var(--theme-color-soft-bdr);
+  color: var(--theme-color-soft-text);
+}
+
+.ix-verus-mode-legend span[data-mode] {
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+}
+
+.ix-verus-mode-legend span[data-mode='exec']  { background: var(--theme-color-soft-text); }
+.ix-verus-mode-legend span[data-mode='proof'] { background: var(--theme-color-primary); }
+.ix-verus-mode-legend span[data-mode='spec']  { background: var(--theme-color-warning); }
+
+.ix-verus-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  padding: 4px 0;
+}
+
+.ix-verus-line {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  align-items: center;
+  line-height: var(--ix-wb-row-height);
+  white-space: pre;
+}
+
+.ix-verus-line[data-active='true'] {
+  background: var(--theme-color-component-1--hover, var(--theme-color-component-1));
+}
+
+.ix-verus-gutter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  padding-right: 8px;
+  user-select: none;
+}
+
+.ix-verus-line-no {
+  color: var(--theme-color-soft-text);
+  font-size: 11px;
+}
+
+.ix-verus-glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  font-family: var(--ix-wb-font-mono);
+  font-size: 11px;
+  line-height: 1;
+  border: 1px solid var(--theme-color-soft-bdr);
+  border-radius: 2px;
+  background: var(--theme-color-component-1);
+  cursor: pointer;
+}
+
+.ix-verus-glyph[data-state='verified'] { color: var(--theme-color-success, #00c1b6); }
+.ix-verus-glyph[data-state='failed']   { color: var(--theme-color-alarm); }
+.ix-verus-glyph[data-state='admit']    { color: var(--theme-color-warning); }
+.ix-verus-glyph[data-state='timeout']  { color: var(--theme-color-warning); }
+
+.ix-verus-code {
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.ix-verus-code[data-mode='proof'] {
+  box-shadow: inset 3px 0 0 var(--theme-color-primary);
+}
+
+.ix-verus-code[data-mode='spec'] {
+  box-shadow: inset 3px 0 0 var(--theme-color-warning);
+}
+
+.ix-verus-code[data-mode='exec'] {
+  box-shadow: inset 3px 0 0 var(--theme-color-soft-bdr);
+}
+
+.ix-verus-inlay {
+  margin: 2px 10px 4px 74px;
+  border: 1px solid var(--theme-color-soft-bdr);
+  background: var(--theme-color-component-1);
+  padding: 6px 8px;
+  font-size: 11px;
+}
+
+.ix-verus-inlay-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.ix-verus-inlay-header [data-state='verified'] { color: var(--theme-color-success, #00c1b6); }
+.ix-verus-inlay-header [data-state='failed']   { color: var(--theme-color-alarm); }
+.ix-verus-inlay-header [data-state='admit']    { color: var(--theme-color-warning); }
+.ix-verus-inlay-header [data-state='timeout']  { color: var(--theme-color-warning); }
+
+.ix-verus-ce-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 4px 10px;
+  padding-top: 6px;
+  font-family: var(--ix-wb-font-mono);
+}
+
+.ix-verus-ce-head {
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--theme-color-soft-text);
+  font-size: 10px;
+}
+
+.ix-verus-ce-symbol { color: var(--theme-color-primary); }
+
+.ix-verus-ce-grid span[data-violating='true'] {
+  color: var(--theme-color-alarm);
+  font-weight: 600;
+}
