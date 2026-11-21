@@ -6,3 +6,6 @@ export * from './ProofDag';
 export * from './Flamegraph';
 export * from './AdversarialTranscript';
 export * from './PatchGate';
+export * from './GhostPatchDrawer';
+export * from './AttestationLedger';
+export * from './ExchangeDiff';
