@@ -23,6 +23,8 @@ export interface IxPacketGridProps {
   selectedRowIndex?: number | null;
   onSelectRow?: (row: PacketGridRow, index: number) => void;
   emptyLabel?: string;
+  /** Noun for the toolbar row count, e.g. "CVEs" instead of the default "packets" */
+  unitLabel?: string;
 }
 
 const DEFAULT_VIEWPORT_TEST_HEIGHT = 400;
@@ -37,6 +39,7 @@ export const IxPacketGrid: React.FC<IxPacketGridProps> = ({
   selectedRowIndex = null,
   onSelectRow,
   emptyLabel = 'No packets captured',
+  unitLabel = 'packets',
 }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [scrollTop, setScrollTop] = useState(0);
@@ -75,7 +78,7 @@ export const IxPacketGrid: React.FC<IxPacketGridProps> = ({
     <div className="ix-packet-grid">
       <div className="ix-packet-grid-toolbar">
         <span data-testid="packet-count">
-          {rows.length.toLocaleString('en-US')} packets
+          {rows.length.toLocaleString('en-US')} {unitLabel}
         </span>
         <kbd className="ix-kbd">↑↓ navigate</kbd>
       </div>

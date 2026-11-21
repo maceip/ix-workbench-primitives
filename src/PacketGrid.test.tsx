@@ -66,4 +66,9 @@ describe('IxPacketGrid', () => {
     render(<IxPacketGrid columns={columns} rows={[]} viewportHeight={200} />);
     expect(screen.getByText('No packets captured')).toBeTruthy();
   });
+
+  it('uses unitLabel for the toolbar count', () => {
+    render(<IxPacketGrid columns={columns} rows={makeRows(20)} viewportHeight={200} unitLabel="CVEs" />);
+    expect(screen.getByTestId('packet-count').textContent).toBe('20 CVEs');
+  });
 });
