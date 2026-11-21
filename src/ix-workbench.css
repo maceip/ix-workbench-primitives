@@ -430,3 +430,96 @@ ix-pane-layout > [slot='content'],
   color: var(--theme-color-alarm);
   font-weight: 600;
 }
+
+/* IxProofDag — layered SVG dependency graph */
+.ix-proof-dag {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  background: var(--theme-color-1);
+  color: var(--theme-color-std-text);
+}
+
+.ix-dag-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 10px;
+  font-size: 11px;
+  background: var(--theme-color-component-1);
+  border-bottom: 1px solid var(--theme-color-soft-bdr);
+}
+
+.ix-dag-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--theme-color-soft-text);
+}
+
+.ix-dag-legend span[data-state] {
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  margin-left: 6px;
+}
+
+.ix-dag-legend span[data-state='verified']     { background: var(--theme-color-success, #00c1b6); }
+.ix-dag-legend span[data-state='assumed']      { background: var(--theme-color-warning); }
+.ix-dag-legend span[data-state='invalidated']  { background: var(--theme-color-alarm); }
+.ix-dag-legend span[data-state='proving']      { background: var(--theme-color-primary); }
+
+.ix-dag-canvas-wrap {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  padding: 8px;
+}
+
+.ix-dag-edge {
+  fill: none;
+  stroke: var(--theme-color-soft-bdr);
+  stroke-width: 1;
+}
+
+.ix-dag-edge[data-impact='true'] {
+  stroke: var(--theme-color-alarm);
+  stroke-width: 1.5;
+}
+
+.ix-dag-node rect {
+  fill: var(--theme-color-component-1);
+  stroke: var(--theme-color-soft-bdr);
+  cursor: pointer;
+}
+
+.ix-dag-node:hover rect {
+  stroke: var(--theme-color-std-bdr);
+}
+
+.ix-dag-node[data-selected='true'] rect {
+  stroke: var(--theme-color-primary);
+  stroke-width: 2;
+}
+
+.ix-dag-node[data-state='verified'] rect     { fill: color-mix(in srgb, var(--theme-color-success, #00c1b6) 18%, var(--theme-color-component-1)); }
+.ix-dag-node[data-state='assumed'] rect      { fill: color-mix(in srgb, var(--theme-color-warning) 18%, var(--theme-color-component-1)); }
+.ix-dag-node[data-state='invalidated'] rect  { fill: color-mix(in srgb, var(--theme-color-alarm) 18%, var(--theme-color-component-1)); }
+.ix-dag-node[data-state='proving'] rect      { fill: color-mix(in srgb, var(--theme-color-primary) 18%, var(--theme-color-component-1)); }
+
+.ix-dag-node[data-affected='true'] rect {
+  stroke: var(--theme-color-alarm);
+  stroke-dasharray: 4 2;
+}
+
+.ix-dag-node-label {
+  font-size: 11px;
+  font-family: var(--ix-wb-font-mono);
+  fill: var(--theme-color-std-text);
+}
+
+.ix-dag-node-sub {
+  font-size: 9.5px;
+  fill: var(--theme-color-soft-text);
+}
