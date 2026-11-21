@@ -180,3 +180,86 @@ ix-pane-layout > [slot='content'],
   overflow-x: auto;
   white-space: pre;
 }
+
+/* IxPacketGrid — windowed 100k-row packet table */
+.ix-packet-grid {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  background: var(--theme-color-1);
+  color: var(--theme-color-std-text);
+}
+
+.ix-packet-grid-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 10px;
+  font-size: 11px;
+  background: var(--theme-color-component-1);
+  border-bottom: 1px solid var(--theme-color-soft-bdr);
+}
+
+.ix-packet-grid-header {
+  display: grid;
+  gap: 0 10px;
+  padding: 0 10px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--theme-color-soft-text);
+  background: var(--theme-color-component-1);
+  border-bottom: 1px solid var(--theme-color-std-bdr);
+  line-height: var(--ix-wb-row-height);
+  user-select: none;
+}
+
+.ix-packet-grid-row {
+  display: grid;
+  gap: 0 10px;
+  padding: 0 10px;
+  line-height: var(--ix-wb-row-height);
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-bottom: 1px solid var(--theme-color-soft-bdr);
+  cursor: pointer;
+}
+
+.ix-packet-grid-row:hover {
+  background: var(--theme-color-component-1);
+}
+
+.ix-packet-grid-row[data-selected='true'] {
+  background: var(--theme-color-primary--hover, var(--theme-color-primary));
+  outline: 1px solid var(--theme-color-primary);
+}
+
+.ix-packet-grid-row[data-tone='critical'] .ix-packet-grid-cell:first-child {
+  box-shadow: inset 3px 0 0 var(--theme-color-alarm);
+}
+
+.ix-packet-grid-row[data-tone='warning'] .ix-packet-grid-cell:first-child {
+  box-shadow: inset 3px 0 0 var(--theme-color-warning);
+}
+
+.ix-packet-grid-row[data-tone='verified'] .ix-packet-grid-cell:first-child {
+  box-shadow: inset 3px 0 0 var(--theme-color-success, #00c1b6);
+}
+
+.ix-packet-grid-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ix-packet-grid-cell[data-mono='true'] {
+  font-family: var(--ix-wb-font-mono);
+}
+
+.ix-packet-grid-empty {
+  padding: 16px 10px;
+  font-size: 12px;
+  color: var(--theme-color-soft-text);
+}
