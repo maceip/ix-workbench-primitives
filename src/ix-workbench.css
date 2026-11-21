@@ -523,3 +523,87 @@ ix-pane-layout > [slot='content'],
   font-size: 9.5px;
   fill: var(--theme-color-soft-text);
 }
+
+/* IxFlamegraph — Z3 quantifier instantiation icicle bars */
+.ix-flamegraph {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  background: var(--theme-color-1);
+  color: var(--theme-color-std-text);
+}
+
+.ix-flame-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 10px;
+  font-size: 11px;
+  background: var(--theme-color-component-1);
+  border-bottom: 1px solid var(--theme-color-soft-bdr);
+}
+
+.ix-flame-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 6px 0;
+}
+
+.ix-flame-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 1px 10px;
+  font-family: var(--ix-wb-font-mono);
+  font-size: 11px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.ix-flame-row:hover {
+  background: var(--theme-color-component-1);
+}
+
+.ix-flame-row[data-selected='true'] {
+  background: var(--theme-color-component-1);
+  outline: 1px solid var(--theme-color-primary);
+}
+
+.ix-flame-bar {
+  display: flex;
+  align-items: center;
+  height: 18px;
+  padding-left: 6px;
+  background: color-mix(in srgb, var(--theme-color-primary) 45%, var(--theme-color-component-1));
+  border-radius: 1px;
+  overflow: hidden;
+  flex-shrink: 0;
+  min-width: 4px;
+}
+
+.ix-flame-row[data-hotspot='true'] .ix-flame-bar {
+  background: color-mix(in srgb, var(--theme-color-alarm) 55%, var(--theme-color-component-1));
+}
+
+.ix-flame-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ix-flame-count {
+  color: var(--theme-color-soft-text);
+  white-space: nowrap;
+}
+
+.ix-flame-row[data-hotspot='true'] .ix-flame-count {
+  color: var(--theme-color-alarm);
+  font-weight: 600;
+}
+
+.ix-flame-ms {
+  color: var(--theme-color-soft-text);
+  white-space: nowrap;
+}
