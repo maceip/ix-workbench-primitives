@@ -42,7 +42,6 @@ describe('IxFlamegraph', () => {
   });
 
   it('flags quantifier hotspots above the share threshold', () => {
-    render(<IxFlamegraph rootLabel="vmem.rs" spans={spans} hotspotThreshold={0.5} />);
     // qi_flags subtree = 6,100 / 13,800 ≈ 0.44 → not hotspot at 0.5
     const first = render(<IxFlamegraph rootLabel="vmem.rs" spans={spans} hotspotThreshold={0.5} />);
     expect(screen.getByTestId('flame-span-qi_flags').getAttribute('data-hotspot')).toBe('false');
