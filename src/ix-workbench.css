@@ -607,3 +607,100 @@ ix-pane-layout > [slot='content'],
   color: var(--theme-color-soft-text);
   white-space: nowrap;
 }
+
+/* IxAdversarialTranscript — researcher/critic verification loop */
+.ix-transcript {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  background: var(--theme-color-1);
+  color: var(--theme-color-std-text);
+}
+
+.ix-transcript-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 10px;
+  font-size: 11px;
+  background: var(--theme-color-component-1);
+  border-bottom: 1px solid var(--theme-color-soft-bdr);
+}
+
+.ix-transcript-verdict-pill {
+  font-family: var(--ix-wb-font-mono);
+  font-size: 11px;
+  padding: 1px 8px;
+  border: 1px solid var(--theme-color-soft-bdr);
+  border-radius: 2px;
+}
+
+.ix-transcript-verdict-pill[data-tone='critical'] { color: var(--theme-color-alarm); border-color: var(--theme-color-alarm); }
+.ix-transcript-verdict-pill[data-tone='verified'] { color: var(--theme-color-success, #00c1b6); border-color: var(--theme-color-success, #00c1b6); }
+.ix-transcript-verdict-pill[data-tone='warning']  { color: var(--theme-color-warning); border-color: var(--theme-color-warning); }
+
+.ix-transcript-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+}
+
+.ix-transcript-turn {
+  display: grid;
+  grid-template-columns: 3px 1fr;
+  background: var(--theme-color-component-1);
+  border: 1px solid var(--theme-color-soft-bdr);
+}
+
+.ix-transcript-turn[data-kind='claim']           { border-left-width: 0; }
+.ix-transcript-turn[data-agent='critic']         .ix-transcript-agent { color: var(--theme-color-warning); }
+.ix-transcript-turn[data-agent='sandbox']        .ix-transcript-agent { color: var(--theme-color-soft-text); }
+.ix-transcript-turn[data-agent='researcher']     .ix-transcript-agent { color: var(--theme-color-primary); }
+
+.ix-transcript-body-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px 10px;
+  min-width: 0;
+}
+
+.ix-transcript-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.ix-transcript-kind { font-weight: 600; }
+
+.ix-transcript-agent {
+  color: var(--theme-color-soft-text);
+  font-family: var(--ix-wb-font-mono);
+}
+
+.ix-transcript-meta {
+  margin-left: auto;
+  font-family: var(--ix-wb-font-mono);
+  color: var(--theme-color-soft-text);
+}
+
+.ix-transcript-heading {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ix-transcript-pre {
+  margin: 0;
+  padding: 4px 6px;
+  font-family: var(--ix-wb-font-mono);
+  font-size: 11.5px;
+  background: var(--theme-color-1);
+  border: 1px solid var(--theme-color-soft-bdr);
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
